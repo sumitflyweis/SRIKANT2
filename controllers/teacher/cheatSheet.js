@@ -23,7 +23,7 @@ exports.getCheatSheets = async (req, res) => {
     // Retrieve all cheatSheet documents from the database
     const cheatSheets = await CheatSheet.find();
 
-    res.status(200).json(cheatSheets);
+    res.status(200).json({msg:cheatSheets});
   } catch (error) {
     res.status(500).json({ error: "Internal server error" });
   }
@@ -41,7 +41,7 @@ exports.getCheatSheetById = async (req, res) => {
       return res.status(404).json({ error: "Cheat sheet not found" });
     }
 
-    res.status(200).json(cheatSheet);
+    res.status(200).json({msg:cheatSheet});
   } catch (error) {
     res.status(500).json({ error: "Internal server error" });
   }
@@ -64,7 +64,7 @@ exports.updateCheatSheet = async (req, res) => {
       return res.status(404).json({ error: "Cheat sheet not found" });
     }
 
-    res.status(200).json(updatedCheatSheet);
+    res.status(200).json({msg:updatedCheatSheet});
   } catch (error) {
     res.status(500).json({ error: "Internal server error" });
   }

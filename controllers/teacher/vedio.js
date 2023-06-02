@@ -22,7 +22,7 @@ exports.createVedio = async (req, res) => {
 exports.getVedios = async (req, res) => {
   try {
     const vedios = await Vedio.find();
-    res.status(200).json(vedios);
+    res.status(200).json({msg:vedios});
   } catch (error) {
     console.log(error);
     res.status(500).json({ error: "Internal Server Error" });
@@ -36,7 +36,7 @@ exports.getVedioById = async (req, res) => {
     if (!vedio) {
       return res.status(404).json({ error: "Vedio not found" });
     }
-    res.status(200).json(vedio);
+    res.status(200).json({msg:vedio});
   } catch (error) {
     console.log(error);
     res.status(500).json({ error: "Internal Server Error" });
@@ -55,7 +55,7 @@ exports.updateVedio = async (req, res) => {
     if (!updatedVedio) {
       return res.status(404).json({ error: "Vedio not found" });
     }
-    res.status(200).json(updatedVedio);
+    res.status(200).json({msg:updatedVedio});
   } catch (error) {
     console.log(error);
     res.status(500).json({ error: "Internal Server Error" });
