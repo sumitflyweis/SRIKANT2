@@ -35,8 +35,8 @@ catch (err) {
 
 exports.getstudentEnquiryById = async (req, res) => {
 try{
-  const data =  await StudentEnquiry.findById(req.params.id)
-  return res.status(200).send(data)
+  const data =  await StudentEnquiry.findById(req.params.id).populate('studentId');
+  return res.status(200).send({msg:data})
 }
 catch (err) {
     console.log(err.message);
