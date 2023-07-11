@@ -1,5 +1,5 @@
 const express = require('express') 
-const { createseminarsOfStudentByAdmin,createAllseminarsOfStudentByAdmin,getseminarsOfStudentByIdByAdmin,updateseminarsOfStudentByAdmin,deleteseminarsOfStudentByAdmin } = require('../../controllers/admin/oppurtunityParts/seminars')
+const { createseminarsOfStudentByAdmin,getseminars,createAllseminarsOfStudentByAdmin,getseminarsOfStudentByIdByAdmin,updateseminarsOfStudentByAdmin,deleteseminarsOfStudentByAdmin } = require('../../controllers/admin/oppurtunityParts/seminars')
 const { getseminarsOfStudentByIdByStudent,getAllseminarsOfStudentByStudent } = require('../../controllers/student/oppurtunityParts/seminars')
 const { getseminarsOfStudentByIdByTeacher,getAllseminarsOfStudentByTeacher } = require('../../controllers/teacher/oppurtunityParts/seminars')
 const seminars = express.Router()
@@ -16,6 +16,7 @@ seminars.get('/getAllseminarsOfStudentByStudent',getAllseminarsOfStudentByStuden
 //ADMIN
 seminars.post('/createseminarsOfStudentByAdmin',createseminarsOfStudentByAdmin)
 seminars.get('/createAllseminarsOfStudentByAdmin',createAllseminarsOfStudentByAdmin)
+seminars.get('/getseminars/get',getseminars)
  seminars.get('/getseminarsOfStudentByIdByAdmin/:id',getseminarsOfStudentByIdByAdmin)
  seminars.put('/updateseminarsOfStudentByAdmin/:id',updateseminarsOfStudentByAdmin)
  seminars.delete('/deleteseminarsOfStudentByAdmin/:id',deleteseminarsOfStudentByAdmin)
