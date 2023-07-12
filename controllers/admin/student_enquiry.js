@@ -18,7 +18,7 @@ exports.createstudentEnquiry = async (req, res) => {
         firstName:studentData.name,
         lastName:studentData.name,
         branch: studentData.branch,
-        query:req.body.query
+        query:enquiry.query
     }
 
   const newEnquiry = await  StudentEnquiry.create(data);
@@ -32,6 +32,39 @@ catch (err) {
   }
 }
 
+
+
+exports.createstudentEnquiry = async (req, res) => {
+  try{
+  const enquiry = {
+      studentId: req.body.studentId,
+        query:req.body.query
+  }
+
+  const studentData = await student.findById({_id:enquiry.studentId})
+  console.log(studentData)
+
+  const data = {
+      studentId:studentData._id,
+      rollno:studentData.roll_number,
+      firstName:studentData.name,
+      lastName:studentData.name,
+      branch: studentData.branch,
+      query:req.body.query,
+      createdAt: Date.now(),
+      updatedAt: Date.now()
+  }
+
+const newEnquiry = await  StudentEnquiry.create(data);
+return res.status(200).send(newEnquiry)
+}
+catch (err) {
+  console.log(err.message);
+  return res.status(500).json({
+    message: "internal server error",
+  });
+}
+}
 
 exports.getstudentEnquiryById = async (req, res) => {
 try{
