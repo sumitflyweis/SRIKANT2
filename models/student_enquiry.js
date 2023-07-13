@@ -1,10 +1,10 @@
 const mongoose = require("mongoose");
 const objectId = mongoose.Types.ObjectId;
 const studentEnquirySchema = mongoose.Schema({
-  studentId: {
-    type: objectId,
-    ref:"student"
-  },
+  // studentId: {
+  //   type: objectId,
+  //   ref:"student"
+  // },
   rollno: {
     type: String,
   },
