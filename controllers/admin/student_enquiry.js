@@ -22,7 +22,10 @@ exports.createstudentEnquiry = async (req, res) => {
     }
 
   const newEnquiry = await  StudentEnquiry.create(data);
-  return res.status(200).send(newEnquiry)
+  return  res.status(200).json({
+    message: "enquiry Data ",
+    data: newEnquiry,
+  });
 }
 catch (err) {
     console.log(err.message);
@@ -34,42 +37,13 @@ catch (err) {
 
 
 
-exports.createstudentEnquiry = async (req, res) => {
-  try{
-  const enquiry = {
-      studentId: req.body.studentId,
-        query:req.body.query
-  }
-
-  const studentData = await student.findById({_id:enquiry.studentId})
-  console.log(studentData)
-
-  const data = {
-      studentId:studentData._id,
-      rollno:studentData.roll_number,
-      firstName:studentData.name,
-      lastName:studentData.name,
-      branch: studentData.branch,
-      query:req.body.query,
-      createdAt: Date.now(),
-      updatedAt: Date.now()
-  }
-
-const newEnquiry = await  StudentEnquiry.create(data);
-return res.status(200).send(newEnquiry)
-}
-catch (err) {
-  console.log(err.message);
-  return res.status(500).json({
-    message: "internal server error",
-  });
-}
-}
-
 exports.getstudentEnquiryById = async (req, res) => {
 try{
   const data =  await StudentEnquiry.findById(req.params.id).populate('studentId');
-  return res.status(200).send({msg:data})
+  return  res.status(200).json({
+    message: "enquiry Data ",
+    data: data,
+  });
 }
 catch (err) {
     console.log(err.message);
@@ -83,7 +57,10 @@ catch (err) {
 exports.getAllstudentEnquiry = async (req, res) => {
     try{
         const data =  await StudentEnquiry.find().populate('studentId');
-        return res.status(200).send({msg:data})
+        return  res.status(200).json({
+          message: "enquiry Data ",
+          data: data,
+        });
 }catch (err) {
     console.log(err.message);
     return res.status(500).json({
@@ -101,7 +78,10 @@ exports.updatestudentEnquiry = async (req, res) => {
         }
   const update =  await StudentEnquiry.findByIdAndUpdate(req.params.id, enquiry, { new: true }).populate('studentId');
   console.log(update)
-  return res.status(200).send(update)
+  return  res.status(200).json({
+    message: "enquiry Data ",
+    data: update,
+  })
 }catch (err) {
     console.log(err.message);
     return res.status(500).json({
@@ -115,7 +95,10 @@ exports.deletestudentEnquiry = async (req, res) => {
     try{
   const data =  await StudentEnquiry.findByIdAndDelete(req.params.id);
   console.log(data)
-  return res.status(200).send(data)
+  return  res.status(200).json({
+    message: "enquiry Data ",
+    data: data,
+  })
 }catch (err) {
     console.log(err.message);
     return res.status(500).json({

@@ -18,4 +18,4 @@ const coarseSchema = mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("coarseSchema", coarseSchema);
+module.exports = mongoose.model("coarseSchema", coarseSchema)
